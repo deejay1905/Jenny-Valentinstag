@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unsere Erinnerungen ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Dancing Script', cursive;
+  margin: 0;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #ffd6e0, #ff8fa3);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Animate gradient slowly */
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Rosen im Hintergrund */
+.rose {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Red_Rose.svg/1200px-Red_Rose.svg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Zufällige Schriftzüge */
+.text-bg {
+  position: absolute;
+  font-size: 2em;
+  color: rgba(255,255,255,0.2);
+  font-weight: bold;
+  pointer-events: none;
+  user-select: none;
+}
+
+header {
+  padding: 60px 20px;
+}
+h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 8px #ff0000;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.card {
+  width: 180px;
+  height: 180px;
+  background: #fff0f5;
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 10px 20px rgba(255,0,100,0.3);
+}
+.card:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 15px 30px rgba(255,0,100,0.5);
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #ffedf0;
+  padding: 25px;
+  border-radius: 25px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(255,0,100,0.4);
+}
+.modal-content img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+button {
+  background: #ff4d6d;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 15px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 5px 15px rgba(255,0,100,0.3);
+}
+button:hover {
+  background: #ff2a5c;
+  transform: scale(1.05);
+}
+
+/* Floating hearts in background */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: float 6s infinite;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(-45deg) scale(1);}
+  50% { transform: translateY(-200px) rotate(-45deg) scale(1.2);}
+  100% { transform: translateY(-400px) rotate(-45deg) scale(0.8);}
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Unsere Erinnerungen ❤️</h1>
+</header>
+
+<div class="container">
+  <!-- 32 Bilder wie zuvor -->
+  <div class="card" onclick="openModal('img1')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny1.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img2')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny2.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img3')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny3.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img4')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny4.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img5')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny5.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img6')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny6.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img7')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny7.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img8')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny8.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img9')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny9.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img10')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny10.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img11')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny11.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img12')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny12.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img13')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny13.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img14')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny14.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img15')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny15.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img16')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny17.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img17')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny18.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img18')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny19.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img19')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny20.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img20')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny21.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img21')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny22.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img22')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny23.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img23')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny24.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img24')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny25.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img25')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny26.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img26')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny27.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img27')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny28.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img28')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny29.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img29')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny30.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img30')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny31.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img31')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny32.jpg?raw=true"></div>
+  <div class="card" onclick="openModal('img32')"><img src="https://github.com/deejay1905/LoveYou/blob/main/jenny16.jpg?raw=true"></div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <img id="modalImage" src="" alt="Popup Bild">
+    <button onclick="closeModal()">Schließen ❤️</button>
+  </div>
+</div>
+
+<script>
+// Modal nur mit Bild
+const modalContent = {};
+for(let i=1;i<=32;i++){
+  modalContent['img'+i]={img:`https://github.com/deejay1905/LoveYou/blob/main/jenny${i}.jpg?raw=true`};
+}
+
+function openModal(key){
+  document.getElementById("modalImage").src = modalContent[key].img;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+
+// Floating hearts
+for(let i=0;i<50;i++){
+  const heart = document.createElement('div');
+  heart.className='heart';
+  heart.style.left=Math.random()*100+'%';
+  heart.style.animationDuration=(4+Math.random()*4)+'s';
+  heart.style.width=(10+Math.random()*20)+'px';
+  heart.style.height=heart.style.width;
+  document.body.appendChild(heart);
+}
+
+// Rosen zufällig platzieren
+for(let i=0;i<15;i++){
+  const rose = document.createElement('div');
+  rose.className='rose';
+  rose.style.top = Math.random()*90+'%';
+  rose.style.left = Math.random()*90+'%';
+  rose.style.transform = `rotate(${Math.random()*360}deg) scale(${0.5+Math.random()})`;
+  document.body.appendChild(rose);
+}
+
+// Schriftzüge zufällig platzieren
+const texts = ["Liebe", "Für immer", "Du & Ich", "❤️", "Valentinstag"];
+for(let i=0;i<20;i++){
+  const t = document.createElement('div');
+  t.className='text-bg';
+  t.style.top=Math.random()*90+'%';
+  t.style.left=Math.random()*90+'%';
+  t.style.transform=`rotate(${Math.random()*360}deg)`;
+  t.innerText = texts[Math.floor(Math.random()*texts.length)];
+  document.body.appendChild(t);
+}
+</script>
+
+</body>
+</html>
